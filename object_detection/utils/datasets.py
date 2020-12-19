@@ -2,18 +2,11 @@ import glob
 import random
 import os
 import numpy as np
-
 import torch
-
 from torch.utils.data import Dataset
 from PIL import Image
 import torchvision.transforms as transforms
-
-##import matplotlib.pyplot as plt
-##import matplotlib.patches as patches
-
 from skimage.transform import resize
-
 import sys
 
 class ImageFolder(Dataset):
@@ -39,7 +32,6 @@ class ImageFolder(Dataset):
         input_img = np.transpose(input_img, (2, 0, 1))
         # As pytorch tensor
         input_img = torch.from_numpy(input_img).float()
-
         return img_path, input_img
 
     def __len__(self):
@@ -55,20 +47,14 @@ class ListDataset(Dataset):
         self.max_objects = 50
 
     def __getitem__(self, index):
-
-        #---------
-        #  Image
-        #---------
-
+        # Image
         img_path = self.img_files[index % len(self.img_files)].rstrip()
         img = np.array(Image.open(img_path))
-
         # Handles images with less than three channels
         while len(img.shape) != 3:
             index += 1
             img_path = self.img_files[index % len(self.img_files)].rstrip()
             img = np.array(Image.open(img_path))
-
         h, w, _ = img.shape
         dim_diff = np.abs(h - w)
         # Upper (left) and lower (right) padding
@@ -84,13 +70,8 @@ class ListDataset(Dataset):
         input_img = np.transpose(input_img, (2, 0, 1))
         # As pytorch tensor
         input_img = torch.from_numpy(input_img).float()
-
-        #---------
-        #  Label
-        #---------
-
+        # Label
         label_path = self.label_files[index % len(self.img_files)].rstrip()
-
         labels = None
         if os.path.exists(label_path):
             labels = np.loadtxt(label_path).reshape(-1, 5)
@@ -114,7 +95,6 @@ class ListDataset(Dataset):
         if labels is not None:
             filled_labels[range(len(labels))[:self.max_objects]] = labels[:self.max_objects]
         filled_labels = torch.from_numpy(filled_labels)
-
         return img_path, input_img, filled_labels
 
     def __len__(self):
