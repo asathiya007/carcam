@@ -1,20 +1,12 @@
 from __future__ import division
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 import numpy as np
-
 from PIL import Image
-
-from utils.parse_config import *
-from utils.utils import build_targets
+from utils import *
 from collections import defaultdict
-
-##import matplotlib.pyplot as plt
-##import matplotlib.patches as patches
-
 
 def create_modules(module_defs):
     """
@@ -90,17 +82,13 @@ def create_modules(module_defs):
 
     return hyperparams, module_list
 
-
 class EmptyLayer(nn.Module):
     """Placeholder for 'route' and 'shortcut' layers"""
-
     def __init__(self):
         super(EmptyLayer, self).__init__()
 
-
 class YOLOLayer(nn.Module):
     """Detection layer"""
-
     def __init__(self, anchors, num_classes, img_dim):
         super(YOLOLayer, self).__init__()
         self.anchors = anchors
@@ -226,10 +214,8 @@ class YOLOLayer(nn.Module):
             )
             return output
 
-
 class Darknet(nn.Module):
     """YOLOv3 object detection model"""
-
     def __init__(self, config_path, img_size=416):
         super(Darknet, self).__init__()
         self.module_defs = parse_model_config(config_path)
@@ -271,7 +257,6 @@ class Darknet(nn.Module):
 
     def load_weights(self, weights_path):
         """Parses and loads the weights stored in 'weights_path'"""
-
         # Open the weights file
         fp = open(weights_path, "rb")
         header = np.fromfile(fp, dtype=np.int32, count=5)  # First five are header values
@@ -323,9 +308,7 @@ class Darknet(nn.Module):
         @:param path    - path of the new weights file
         @:param cutoff  - save layers between 0 and cutoff (cutoff = -1 -> all are saved)
     """
-
     def save_weights(self, path, cutoff=-1):
-
         fp = open(path, "wb")
         self.header_info[3] = self.seen
         self.header_info.tofile(fp)
