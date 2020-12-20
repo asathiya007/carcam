@@ -1,5 +1,5 @@
 ### CarCam
-CarCam is a computer vision system, built with Python and OpenCV, for self-driving cars that detects lanes, pedestrians, and collisions. 
+CarCam is a computer vision system, built with Python, PyTorch, and OpenCV, for self-driving cars. CarCam detects lanes and road entities (like other cars on the road), and it anticipates collisions with these road entities. 
 
 ### How to Run
 1. Download/clone the repository. 
