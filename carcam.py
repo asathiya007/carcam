@@ -1,4 +1,6 @@
 # import code
+import sys 
+sys.path.append('./src')
 from video_utils import *
 from lane_detection import detect_lanes
 from road_entity_detection import detect_road_entities
