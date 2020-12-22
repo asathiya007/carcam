@@ -4,7 +4,7 @@ import torch
 from torchvision import transforms
 from torch.autograd import Variable
 from PIL import Image
-from math_utils import MathUtils
+from math_utils import lines_box_intersect
 from object_detection_models import *
 from object_detection_utils import *
 
@@ -97,7 +97,7 @@ class RoadEntityDetection:
                     class_name = classes[int(class_pred)]
                     if class_name in RoadEntityDetection.road_entities: 
                         box = (x1, y1, box_width, box_height)
-                        collision_risk = MathUtils.line_box_intersect(lane_lines[frame_number], box)
+                        collision_risk = lines_box_intersect(lane_lines[frame_number], box)
                         if collision_risk:
                             color = (0, 0, 255, 1.0)
                         else: 

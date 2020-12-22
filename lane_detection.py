@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from math_utils import MathUtils
+from math_utils import lines_intersect, abs_slope_check_threshold
 
 # lane detection class 
 class LaneDetection: 
@@ -91,7 +91,7 @@ class LaneDetection:
                     lane_detected_frames.append(frame)
                     lane_lines_per_frame.append(None)
                     continue
-            elif MathUtils.lines_intersect(lane_lines) or MathUtils.abs_slope_check_threshold(lane_lines, 0.6):
+            elif lines_intersect(lane_lines) or abs_slope_check_threshold(lane_lines, 0.6):
                 if len(valid_lane_lines) >= 1:
                     lane_lines = valid_lane_lines[-1]
             annotated_frame = LaneDetection._draw_lane_lines(frame, lane_lines)
