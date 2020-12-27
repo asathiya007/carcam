@@ -1,7 +1,7 @@
 ### CarCam
-CarCam is a computer vision pipeline for self-driving cars and other autonomous vehicles, built with Python, PyTorch, and OpenCV. CarCam detects and marks/bounds lanes and road entities (like other cars on the road). CarCam also gauges collision risks with these road entities. 
+CarCam is a computer vision pipeline for autonomous vehicles, built with PyTorch and OpenCV. CarCam uses machine learning to detect lanes, track road entities (like other vehicles), and assess collision risks with these road entities. CarCam relies on input from only one camera, istead of relying on several cameras, multiple sensors, and/or complex systems like LiDAR, making safe self-driving simple, cheap, and easily accessible to all vehicles.
 
-Lanes are marked with blue lines, and road entities are bounded in green or red boxed. A road entity with which a collision is unlikely to occur is bounded in a green box and is deemed 'safe'. A road entity with which a collision may occur is bounded in a red box and is deemed 'risky'. 
+Lanes are marked with blue lines, and road entities are bounded in green or red boxes. A road entity with which a collision is unlikely to occur is bounded in a green box and is deemed 'safe'. A road entity with which a collision may occur is bounded in a red box and is deemed 'risky'. 
 
 ### How to Run
 1. Download/clone the repository. 
