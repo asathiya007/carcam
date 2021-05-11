@@ -12,4 +12,4 @@ Lanes are marked with blue lines, and road entities are bounded in green or red 
 4. Walk through the Jupyter notebook `carcam.ipynb` or run the `carcam.py` file with this command: `python3 carcam.py`. Depending on the specs of your system, this may take a while, so please be patient. Your results will be ready soon! 
 
 # View Results
-Download and play the video `output.mp4`. The same video can also be watched on YouTube, at this URL: https://youtu.be/IRfuNHZG8CQ. Enjoy! 
+Download and play the video `output.mp4`. The same video can also be watched on YouTube, here: https://youtu.be/IRfuNHZG8CQ. Enjoy! 
