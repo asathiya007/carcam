@@ -1,5 +1,5 @@
 # CarCam
-CarCam is a computer vision pipeline for autonomous vehicles, built with PyTorch and OpenCV. CarCam uses machine learning to detect lanes, track road entities (like other vehicles), and assess collision risks with these road entities. 
+CarCam is a artificial intelligence pipeline for autonomous vehicles, built with PyTorch and OpenCV. CarCam uses machine learning and computer vision to detect lanes, track road entities (like other vehicles), and assess collision risks with these road entities. 
 
 CarCam relies on input from only one camera, instead of relying on several cameras, multiple sensors, and/or complex systems like LiDAR, making safe self-driving simple, cheap, and easily accessible to all vehicles.
 
